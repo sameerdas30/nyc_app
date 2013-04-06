@@ -1,0 +1,164 @@
+<!DOCTYPE html> 
+<html>
+<head>
+<meta charset="utf-8">
+<meta content='True' name='HandheldFriendly' />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" /> 
+<title>NYC Royal Limo - NY Limo, Limo NY, Limo NYC, NYC Limo, Limo New York, New York Limo</title>
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+<meta name="apple-mobile-web-app-capable" content="yes" /> 
+<script src="js/jquery-1.8.3.js"></script>
+<script src="js/jquery.mobile-1.2.0.min.js"></script>
+    <link rel="stylesheet"  href="css/jquery.mobile-1.2.0.css" />
+    <script src="js/mootools-core-1.4.5-nocompat.js"></script> 
+    <!--[if gte IE 9]>
+  <style type="text/css">
+    .gradient {
+       filter: none;
+    }
+  </style>
+<![endif]-->
+<script type='text/javascript'>//<![CDATA[ 
+window.addEvent('load', function() {
+$('#airport').hide('fast');
+$('#address').hide('fast');
+$('#hour').hide('fast');
+
+$('#PUT').change(function() {
+    var value = $(this).val();
+    if (value == 'FA') {
+        $('#airport').show('fast');
+		$('#address').hide('fast');
+		$('#hour').hide('fast');
+    }
+	if (value == 'TA') {
+		$('#airport').show('fast');
+		$('#address').hide('fast');
+		$('#hour').hide('fast');
+		$('#toairport').hide('fast');
+	}
+	if (value == 'PTP') {
+		$('#address').show('fast');
+		$('#airport').hide('fast');
+ 		$('#hour').hide('fast');
+	}
+	if (value == 'BTH') {
+		$('#hour').show('fast');
+		$('#airport').hide('fast');
+		$('#address').hide('fast');
+ 
+	}
+/*    else {
+        $('#damage_div').hide('fast');
+    }*/
+});
+});//]]>  
+
+</script>
+</head> 
+<body> 
+<div data-role="page" id="page" data-cache="never">
+	<div data-role="header">
+		<h1>NYC Royal Limo</h1>
+	</div>
+
+  <div data-role="header" data-position="inline" data-theme="a">
+	<a href="index.html" data-role="button" data-rel="back" data-icon="arrow-l" data-transition="slide">Back</a>
+	<h1><strong>Booking</strong></h1>
+	<a href="index.html" data-transition="pop"
+data-icon="home" data-iconpos="notext" data-direction="reverse">Home</a>
+	</div>
+<!-- /header -->
+<form name="register" id="register" method="post" action="transprocess.php" onSubmit="return parkAndFlyvalidation();" data-ajax="false">
+	<div data-role="content" data-theme="b">	
+				
+                
+
+<div class="content_inner_box_header">Personal Information</div>
+<div class="content_inner_box">
+
+<div data-role="fieldcontain">
+    <label for="name">*First Name:</label>
+    <input type="text" name="fname" id="fname" value=""  />
+</div>
+
+<div data-role="fieldcontain">
+    <label for="name">*Last Name:</label>
+    <input type="text" name="lname" id="lname" value=""  />
+</div>
+<div data-role="fieldcontain">
+    <label for="name">Phone: </label>
+    <input type="text" name="phone" id="phone" value=""  />
+</div>
+<div data-role="fieldcontain">
+    <label for="name">Cell: </label>
+    <input type="text" name="cell" id="cell" value=""  />
+</div>
+<div data-role="fieldcontain">
+	         <label for="email">Email:</label>
+	         <input type="email" name="email" id="email" value="" />
+			</div>
+<div class="form_inner_div">
+                
+      
+      <div class="form_text_fild_div">
+      
+      <div class="left_input_div ">
+      
+      <div class="left_input_text_div"><label for="name"># of Passengers:</label></div>
+      <div class="left_input_fild_div"><select name="no_of_passengers" id="no_of_passengers">
+			<option value="1">1</option>
+				  <option value="2">2</option>
+				  <option value="3">3</option>
+				  <option value="4">4</option>
+				  <option value="5">5</option>
+				  <option value="6">6</option>
+				  <option value="7">7</option>
+				  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value="10">10</option>
+            </select></div>
+      </div></div>
+      <div class="form_text_fild_div">
+      <div class="left_input_div ">
+      
+      <div class="left_input_text_div"><label for="name"># of Bags:</label></div>
+      <div class="left_input_fild_div"><select name="no_of_passengers" id="no_of_passengers">
+			<option value="1">1</option>
+				  <option value="2">2</option>
+				  <option value="3">3</option>
+				  <option value="4">4</option>
+				  <option value="5">5</option>
+				  <option value="6">6</option>
+				  <option value="7">7</option>
+				  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value="10">10</option>
+            </select></div>
+      </div>
+      
+      </div>
+      
+    </div></div>
+            
+        
+            
+                <a href="pickup.html" data-role="button" onclick="document.url.submit()" data-inline="true" data-icon="arrow-r" data-theme="c" data-transition="slide">Next</a>
+                </div>
+</form>                
+	</div><!-- /content -->
+	<!--footer_start--> 
+  <div data-role="footer">
+
+<div class="footer_div">
+  <div class="footer_inner_div" align="center"><a href="#"><img src="images/phone_icon.png" alt="" border="0" /></a></div>
+ <div class="footer_inner_div" align="center"><a href="map.html" target="_blank"><img src="images/p_icon.jpg" alt="" border="0" /></a></div>
+    <div class="footer_inner_div" align="center"><a href="#"><img src="images/meas_icon.jpg" alt="" border="0" /></a></div>
+    <div class="footer_inner_div" align="center"><a href="#" target="_blank" ><img src="images/t_icon.jpg" alt="" border="0" />
+    </a></div>
+    <div class="footer_inner_div" align="center"><a href="#" target="_blank"><img src="images/f_icon.jpg" alt="" border="0" /></a></div>
+  </div></div>
+  <!--footer_end--> 
+</div><!-- /page -->
+</body>
+</html>

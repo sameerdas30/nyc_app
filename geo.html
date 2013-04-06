@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Location To Address</title>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"/>
+<script src="js/jquery-1.8.3.js"></script>
+<!--<script language="JavaScript" src="http://www.geoplugin.net/javascript.gp" type="text/javascript"></script>-->
+<script src="js/geo-min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+$(document).ready(function()
+{
+	var Navlat;
+	var Navlong;
+	var dataString;
+	navigator.geolocation.getCurrentPosition( function (position) {
+	console.log("Navlat:"+position.coords.latitude);
+	Navlat=position.coords.latitude;
+	Navlong=position.coords.longitude;
+	console.log("Navlong:"+position.coords.longitude);
+	dataString='sensor=false&language=en&latlng='+Navlat+','+Navlong;
+	console.log("Geo:"+dataString);
+	//alert(dataString);
+	$.ajax
+	({
+		type: "GET",
+		url: "http://maps.googleapis.com/maps/api/geocode/json",
+		data: dataString,
+		cache: false,
+		success: function(html)
+		{
+	 		$.each(html.results[0].address_components, function (index, add) {
+			var spnCustomer =$('<a href=\'mailto:'+add.types[0]+'\'>'+add.long_name+' ['+add.short_name+']</a><br/>');
+			$('body').append(spnCustomer);
+		 	});
+		alert(html.results[0].formatted_address);
+		alert(html.status);
+		/*console.log("Result:"+html[0]);*/
+		$('#uurl').html(html); 
+		}
+	});
+  });
+});
+</script>
+</head>
+
+<body>
+
+<div id="uurl">&#8360</div>
+</body>
+</html>

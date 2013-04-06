@@ -1,0 +1,136 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>TUT</title>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js"></script>
+ 
+    <script type="text/javascript">
+        var prevLink = '<a class="prev" href="#">< < Prev</a>';
+        var nextLink = '</a><a class="next" href="#">Next >></a>';
+        var navHTML = '<div class="prev-next">' +
+                         prevLink +
+                         nextLink +
+                      '</div>';
+        $(function(){
+            // init
+            $('#camperapplicationForm > div')
+                .hide()
+                .append(navHTML);
+            $('#first-step .prev').remove();
+            $('#last-step .next').remove();
+ 
+            // show first step
+            $('#first-step').show();
+ 
+ 
+            $('a.next').click(function(){
+                var whichStep = $(this).parent().parent().attr('id');
+ 
+                if( whichStep == 'first-step' )
+                {
+                    // validate first-step
+					if($('#Gender').val()=='')
+                    {
+                        alert('Select Gender');
+                        $('#Gender').focus();
+                        return false;
+                    }
+                    if($('#Grade').val()=='')
+                    {
+                        alert('Select Grade');
+                        $('#Grade').focus();
+                        return false;
+                    }
+                }
+                else if( whichStep == 'second-step' )
+                {
+                    // validate second-step
+                }
+                else if( whichStep == 'last-step' )
+                {
+                    // validate last-step
+                }
+ 
+                $(this).parent().parent().hide().next().show();
+            });
+ 
+            $('a.prev').click(function(){
+                $(this).parent().parent().hide().prev().show();
+            });
+        });
+    </script>
+</head>
+ 
+<body>
+ 
+<h1>Camper Application Form</h1>
+ 
+<p>Please use this online application form to register for camp.</p>
+<form id="camperapplicationForm"method="post" action="">
+ 
+<div id="first-step">
+    <h2>First Step</h2>
+    <div>
+        <div class="label"><label for="Gender">Gender</label></div>
+        <select name="Gender" id="Gender">
+            <option value="" selected="selected"></option>
+            <option value="Male">Male</option>
+ 
+            <option value="Female">Female</option>
+        </select>
+    </div>
+ 
+    <div>
+        <div class="label"><label for="Grade">Grade in Fall 2009</label></div>
+        <select name="Grade" id="Grade">
+            <option value="" selected="selected"></option>
+            <option value="K">K</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+        </select>
+    </div>
+ 
+ 
+</div>
+ 
+ 
+<div id="second-step">
+    <h2>Second Step</h2>
+    <div class="label"><label for="Site">Site</label></div>
+    <select name="Site" id="Site">
+ 
+        <option value="" selected="selected"></option>
+        <option value="Cross-View">Cross View (Main Site)</option>
+        <option value="Teepee-Village">Teepee Village</option>
+        <option value="Mission-Point">Mission Point</option>
+    </select>
+</div> <!-- end second-step -->
+ 
+<div id="last-step">
+    <h2>Last Step</h2>
+    <p>Please select one of the following payment methods.</p>
+    <div>
+        <input type="radio" name="payment" id="payment0" value="Credit Card" /><label>Credit Card</label>
+    </div>
+    <div>
+        <input type="radio" name="payment" id="payment1" value="Cheque" /><label>Cheque</label>
+    </div>
+ 
+    <input type="submit" name="submit" id="submit" value="submit" />
+</div> <!-- end last-step -->
+ 
+ 
+</form>
+</body>
+</html>
