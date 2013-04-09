@@ -2,7 +2,8 @@
 /* 
   File name: postdata.php
 */
-
+if($_POST)
+{
 if(is_array($_POST))
 
 	{
@@ -76,17 +77,29 @@ curl_setopt ($ch, CURLOPT_POSTFIELDS, "xmldata=".$xml_string);
 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);// Turn off the server and peer verification 
 curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, FALSE); 
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+#curl_setopt($ch, CURLOPT_CONNECTTIMEOUT ,20);
+#curl_setopt($ch, CURLOPT_TIMEOUT, 30); 
 curl_setopt($ch, CURLOPT_VERBOSE, 1);
 
 
 $data = curl_exec($ch); 
 // to get information on the curl resultset
 $info = curl_getinfo($ch);
-echo $data;
+
 if(curl_errno($ch)){
-    print curl_error($ch);
+    #print curl_error($ch);
+	$data='{"BookRideResult" :{"Code" : "'.curl_errno($ch).'","Message" : "'.curl_error($ch).'"}}';
+	print $data;
+}
+else
+{
+	echo $data;
 }
 
 curl_close($ch);
-
+}
+else
+{
+	echo $data='{"BookRideResult" :{"Code" : "-2","Message" : "No Posting Values"}}';
+}
 ?>

@@ -27,13 +27,22 @@
 					return false;
 					}
 					if(frm.password.value=="")
-					{
-					alert("Enter Your Password!");
-					frm.password.focus();
-					return false;
-					}
+                    {
+                        alert('Enter Your Email Address');
+                       frm.password.focus();
+                        return false;
+                    }
+					else
+		{
+			if(!emailInvalid(frm.password.value))
+			{
+				alert("Please Enter Valid Email Address");
+				frm.password.focus();
+				return false;
+			}
+		}
 			
-				if($('#phone').val()=='')
+				if(frm.phone.value=="")
                     {
                         alert('Enter Phone Number');
                         frm.phone.focus();
@@ -46,26 +55,13 @@
 						return false;
 					}
 					
-				if($('#email').val()=='')
-                    {
-                        alert('Enter Your Email Address');
-                       frm.email.focus();
-                        return false;
-                    }
-					{
-						if(!emailInvalid($('#email').val()))
-						{
-							alert("Please Enter Valid Email Address");
-							frm.email.focus();
-							return false;
-						}
-					}
+		
 					
 
-				if($('#textarea').val()=='')
+				if(frm.textarea.value=="")
                     {
                         alert('Enter Your Message');
-                        $('#textarea').focus();
+                        frm.textarea.focus();
                         return false;
                     }
 					
@@ -147,7 +143,7 @@ data-icon="home" data-iconpos="notext" data-direction="reverse">Home</a>
         <div class="content_inner_box_header">Feel free to contact us anytime...</div>
         <div class="content_inner_box">
 		<div class="form1">
-        <form name="contactform" action="" method="post" enctype="multipart/form-data" >
+        <form name="contactform" action="mailing.php" method="post" enctype="multipart/form-data" data-ajax="false" >
 		  <div class="form_conten_div ">
              
              <div data-role="fieldcontain">
@@ -159,17 +155,14 @@ data-icon="home" data-iconpos="notext" data-direction="reverse">Home</a>
     <input type="text" name="company" id="company" value=""  />
 </div>
       <div data-role="fieldcontain">
-	         <label for="password">Password:</label>
-	         <input type="password" name="password" id="password" value="" />
+	         <label for="password">Email:</label>
+	         <input type="text" name="password" id="password" value="" />
 			</div>
      <div data-role="fieldcontain">
 	         <label for="password">Phone:</label>
 	         <input type="text" name="phone" id="phone" value="" />
 			</div>
-      <div data-role="fieldcontain">
-	         <label for="email">Email:</label>
-	         <input type="email" name="email" id="email" value="" />
-			</div>
+      
       <div data-role="fieldcontain">
 <label for="textarea">Massage:</label>
 	<textarea name="textarea" id="textarea"></textarea>
@@ -187,9 +180,9 @@ data-icon="home" data-iconpos="notext" data-direction="reverse">Home</a>
 	</div>	
 	</div><!-- /content -->
 	<!--footer_start--> 
-  <div data-role="footer">
+ <div data-role="footer">
 
-  <div class="home_footer_div">
+<div class="footer_div">
   <div class="footer_inner_div" align="center"><a href="tel:(212)233-5131"><img src="images/phone_icon.png" alt="" border="0" /></a></div>
  <div class="footer_inner_div" align="center"><a href="map.html"><img src="images/p_icon.jpg" alt="" border="0" /></a></div>
     <div class="footer_inner_div" align="center"><a href="mailto:nycroyallimo.com"><img src="images/meas_icon.jpg" alt="" border="0" /></a></div>

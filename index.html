@@ -5,7 +5,6 @@
 <meta content='True' name='HandheldFriendly' />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" /> 
 <title>NYC Royal Limo - NY Limo, Limo NY, Limo NYC, NYC Limo, Limo New York, New York Limo</title>
-<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
 <meta name="apple-mobile-web-app-capable" content="yes" />
 
 <script src="js/jquery-1.8.2.min.js"></script>
@@ -27,29 +26,59 @@
 /*$(function() {
     $("#bok").click(function() {
         $.mobile.changePage("booking.html", { transition: "flip"});
-    });    
+    });  
+	  
 });*/
 $( document ).bind( "mobileinit", function() {
     // Make your jQuery Mobile framework configuration changes here!
 	$.support.cors = true;
     $.mobile.allowCrossDomainPages = true;
 	$.mobile.pageLoadErrorMessage = 'Oh sorry internet failure!';
+	
+	
+	 /* $('select#no_of_passengers').selectmenu('refresh');	 
+	$('input#PickupMeet').checkboxradio('refresh');*/
 });
 $(document).ajaxStart(function() {
+	//alert('init');
+	/*$('select#no_of_passengers').selectmenu('refresh');*/
     $.mobile.loading('show', {
 	text: 'foo',
 	textVisible: true,
 	theme: 'z',
-	html: "<span class='ui-bar ui-overlay-c ui-corner-all' id='sam'><img src='http://webzin4/nyc_final/images/nyc.png' /><h2>is loading for you ...</h2></span>"
+	html: "<span class='ui-bar ui-overlay-c ui-corner-all' id='sam'><img src='images/nyc.png' /><h2>is loading for you ...</h2></span>"
 });
 });
 $(document).ajaxStop(function() {
+	//alert('stop');
     $.mobile.loading('hide');
 });
 </script>
+<script>
+/*  $('#splash').live('pageshow', function(){
+       var hideSplash = function() {
+           $.mobile.changePage($("#index"));
+		   alert('splash');
+		   $('select#no_of_passengers').selectmenu('refresh');
+		   $('input#PickupMeet').checkboxradio('refresh');
+       };
+      setTimeout(hideSplash, 6000);
+  });
+  $('#booking').live('pageshow', function(){
+	  $('select#no_of_passengers').val('1').change();
+	  $('select#no_of_passengers').selectmenu('refresh');
+	  $('input#PickupMeet').checkboxradio('refresh');
+	  alert('booking after');
+  });*/
+</script>
 
 </head> 
-<body> 
+<body>
+<!--<div data-role="page" id="splash"> 
+            <div data-role="content">  
+                <img src="images/retina-startup.png" alt="startup image" style="width: 100%; height: 100%" />
+            </div>
+        </div>-->
 <div data-role="page" id="index" data-cache="never">
 	<div data-role="header" align="center" data-theme="b">
     
@@ -63,11 +92,11 @@ $(document).ajaxStop(function() {
 	<div data-role="content" data-theme="b">	
 		<ul data-role="listview" data-inset="true" data-theme="b">
                      
-                     <li><a href="about.html" data-transition="flip">About Us</a></li>
-                     <li><a href="our_fleet.html" data-transition="flip">Our Fleet</a></li>
-                     <li><a href="service.html" data-transition="flip">Services</a></li>
-                      <li id="bok"><a href="#booking" data-transition="flip" data-prefetch>Book Now</a></li>
-                     <li><a href="contact.html" data-transition="flip">Contact Us</a>
+                     <li><a href="about.html">About Us</a></li>
+                     <li><a href="our_fleet.html">Our Fleet</a></li>
+                     <li><a href="service.html">Services</a></li>
+                      <li id="bok"><a href="#booking"  data-prefetch>Book Now</a></li>
+                     <li><a href="contact.html">Contact Us</a>
 	</ul>		
 	</div><!-- /content -->
 	<!--footer_start--> 
@@ -169,7 +198,7 @@ data-icon="home" data-iconpos="notext" data-direction="reverse">Home</a>
         <div class="content_inner_box">
         <div data-role="fieldcontain">
         <label for="PUT">Pickup Type:</label>
-<select name="PUT" id="PUT" onclick="getValue();">
+<select name="PUT" id="PUT">
 <option value="NA">Select One</option>
 <option value="FA" selected>From Airport</option>
 <option value="TA">To Airport</option>
@@ -1433,13 +1462,12 @@ data-icon="home" data-iconpos="notext" data-direction="reverse">Home</a>
  
     <div data-role="fieldcontain">
     <label for="name">*CV2</label>
-    <input type="text" name="name" id="name" value=""  />
+    <input type="password" name="name" id="name" value=""  />
 </div>
 
 <script>
-Toggle();
 function Toggle(){
-if (document.register.cboxToggle.checked){
+if (document.register.cboxToggle.checked==true){
 	var t=document.getElementById('fname').value; 
 	var l=document.getElementById('lname').value; 
 	var de=document.getElementById('cardname').value;   
@@ -1450,7 +1478,8 @@ document.register.cardname.value=t +' '+ l ;
 
       <div class="form_inner_div">
       <label><input type="checkbox" id="cboxToggle"  name="checkbox-0" onClick="Toggle();" />  Same as passenger </label>
- <input type="submit" name="submit" value="Submit Button" onClick="return paymentchk();"/>
+ <!--<input type="submit" name="submit" value="Submit Button" onClick="return paymentchk();"/>-->
+ <a href="" data-role="button" name="submit" onClick="return paymentchk();">Submit</a>
       </div>
 
                 

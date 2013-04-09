@@ -1,8 +1,14 @@
 //get address from google
+function ShowWait(flag)
+{
+    if (flag)
+        $.mobile.showPageLoadingMsg();
+    else
+        $.mobile.hidePageLoadingMsg();
+}
 
 $(document).ready(function()
 {
-	
 	var Navlat;
 	var Navlong;
 	var dataString;
@@ -73,8 +79,8 @@ $(document).ready(function()
 
 
 //step wise validation starts
-  var prevLink = '<a class="prev" href="#" data-role="button" data-inline="true" data-icon="arrow-l" data-theme="c" data-transition="slide">Previous</a>';
-        var nextLink = '</a><a class="next" href="#" data-role="button" data-inline="true" data-icon="arrow-r" data-theme="c" data-transition="slide">Next</a>';
+   var prevLink = '<a class="prev" href="#" data-role="button" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-inline="true" data-icon="arrow-l" data-mini="true" data-theme="a" data-transition="slide">Previous</a>';
+        var nextLink = '</a><a class="next" href="#" data-role="button" data-iconpos="right" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-inline="true" data-mini="true" data-icon="arrow-r" data-theme="a" data-transition="slide">Next</a>';
         var navHTML = '<div class="prev-next">' +
                          prevLink +
                          nextLink +
@@ -466,8 +472,10 @@ function paymentchk()
 	var str = $("form#register").serialize();
 	 /* alert(decodeURIComponent(str));*/
 	  str=decodeURIComponent(str);
+	  $.mobile.loading('show');
 	  $.post("http://webzin.info/transprocess.php",str,function(data,status){
 		  data = $.parseJSON(data);
+		  alert(status);
 		  alert(data.BookRideResult.Code);
 		  alert(data.BookRideResult.Message);
 		  document.location = "thankyou.html?Code="+data.BookRideResult.Code+"&Message="+data.BookRideResult.Message;/*
