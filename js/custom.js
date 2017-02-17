@@ -23,7 +23,7 @@ $(document).ready(function()
 	$.ajax
 	({
 		type: "GET",
-		url: "http://maps.googleapis.com/maps/api/geocode/json",
+		url: "https://maps.googleapis.com/maps/api/geocode/json",
 		data: dataString,
 		cache: false,
 		success: function(html)
